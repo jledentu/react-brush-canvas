@@ -2,13 +2,20 @@ const WebpackConfig = require('./webpack.config');
 
 module.exports = (config) => {
   config.set({
+
     files: [
       'test/**/*.test.js',
     ],
+
     frameworks: ['mocha'],
+
     preprocessors: {
-      'test/**/*.test.js': ['webpack'],
+      'src/**/*.jsx?': ['webpack', 'sourcemap'],
+      'test/**/*.test.js': ['webpack', 'sourcemap'],
     },
+
+    browsers: ['PhantomJS'],
+
     webpack: {
       devtool: 'inline-source-map',
       module: WebpackConfig.module,
@@ -20,5 +27,12 @@ module.exports = (config) => {
         'react/lib/ReactContext': true,
       },
     },
+
+    webpackServer: {
+      noInfo: true,
+    },
+
+    colors: true,
+    logLevel: config.LOG_INFO,
   });
 };
