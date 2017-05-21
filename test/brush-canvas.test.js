@@ -12,6 +12,6 @@ describe('<BrushCanvas />', () => {
       'layer1',
       'layer2',
     ];
-    const wrapper = mount(<BrushCanvas layers={layers} />);
+    const wrapper = mount(<BrushCanvas layers={layers} selected-layer={'layer1'} />);
   });
 });
